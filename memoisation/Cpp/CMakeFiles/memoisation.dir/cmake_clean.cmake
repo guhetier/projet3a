@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/memoisation.dir/src/main.cpp.o"
+  "CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o"
+  "CMakeFiles/memoisation.dir/src/benchmark.cpp.o"
   "memoisation.pdb"
   "memoisation"
 )

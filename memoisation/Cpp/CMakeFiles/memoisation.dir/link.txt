@@ -1,1 +1,1 @@
-/usr/bin/c++   -std=c++0x    CMakeFiles/memoisation.dir/src/main.cpp.o  -o memoisation -rdynamic 
+/usr/bin/c++   -std=c++0x    CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o CMakeFiles/memoisation.dir/src/benchmark.cpp.o  -o memoisation -rdynamic 

@@ -46,7 +46,8 @@ int main(){
 
     vector<int> tab({1, 2, 5, -4, 3});
     Memoise subSum({{0,tab[0]}},
-        [](int n)->list<int>{ list<int> l; for(int i=0; i<n; l.push_back(i++)); return l;},
+        [](int n)->list<int>{ list<int> l; for(int i=0; i<n; l.push_back(i++))
+            ; return l;},
         [tab](list<int> l, int n)->int{ return tab[n] >= 0 ? l.back() + tab[n] : tab[n];});
 
     subSum.fMem(4);

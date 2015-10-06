@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/guillaume/Documents/projet3a/memoisation
+CMAKE_SOURCE_DIR = /home/guillaume/Documents/projet3a/memoisation/Cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/guillaume/Documents/projet3a/memoisation
+CMAKE_BINARY_DIR = /home/guillaume/Documents/projet3a/memoisation/Cpp
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillaume/Documents/projet3a/memoisation/CMakeFiles /home/guillaume/Documents/projet3a/memoisation/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillaume/Documents/projet3a/memoisation/Cpp/CMakeFiles /home/guillaume/Documents/projet3a/memoisation/Cpp/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillaume/Documents/projet3a/memoisation/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillaume/Documents/projet3a/memoisation/Cpp/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,29 +111,53 @@ memoisation/fast:
 	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/build
 .PHONY : memoisation/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/benchmark.o: src/benchmark.cpp.o
+.PHONY : src/benchmark.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/benchmark.cpp.o:
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/benchmark.cpp.o
+.PHONY : src/benchmark.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/benchmark.i: src/benchmark.cpp.i
+.PHONY : src/benchmark.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/benchmark.cpp.i:
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/benchmark.cpp.i
+.PHONY : src/benchmark.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/benchmark.s: src/benchmark.cpp.s
+.PHONY : src/benchmark.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/benchmark.cpp.s:
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/benchmark.cpp.s
+.PHONY : src/benchmark.cpp.s
+
+src/fixedPoint.o: src/fixedPoint.cpp.o
+.PHONY : src/fixedPoint.o
+
+# target to build an object file
+src/fixedPoint.cpp.o:
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o
+.PHONY : src/fixedPoint.cpp.o
+
+src/fixedPoint.i: src/fixedPoint.cpp.i
+.PHONY : src/fixedPoint.i
+
+# target to preprocess a source file
+src/fixedPoint.cpp.i:
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/fixedPoint.cpp.i
+.PHONY : src/fixedPoint.cpp.i
+
+src/fixedPoint.s: src/fixedPoint.cpp.s
+.PHONY : src/fixedPoint.s
+
+# target to generate assembly for a file
+src/fixedPoint.cpp.s:
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/fixedPoint.cpp.s
+.PHONY : src/fixedPoint.cpp.s
 
 # Help Target
 help:
@@ -144,9 +168,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... memoisation"
 	@echo "... rebuild_cache"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/benchmark.o"
+	@echo "... src/benchmark.i"
+	@echo "... src/benchmark.s"
+	@echo "... src/fixedPoint.o"
+	@echo "... src/fixedPoint.i"
+	@echo "... src/fixedPoint.s"
 .PHONY : help
 
 

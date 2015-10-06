@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/guillaume/Documents/projet3a/memoisation
+CMAKE_SOURCE_DIR = /home/guillaume/Documents/projet3a/memoisation/Cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/guillaume/Documents/projet3a/memoisation
+CMAKE_BINARY_DIR = /home/guillaume/Documents/projet3a/memoisation/Cpp
 
 # Include any dependencies generated for this target.
 include CMakeFiles/memoisation.dir/depend.make
@@ -49,37 +49,62 @@ include CMakeFiles/memoisation.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/memoisation.dir/flags.make
 
-CMakeFiles/memoisation.dir/src/main.cpp.o: CMakeFiles/memoisation.dir/flags.make
-CMakeFiles/memoisation.dir/src/main.cpp.o: src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/guillaume/Documents/projet3a/memoisation/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/memoisation.dir/src/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/memoisation.dir/src/main.cpp.o -c /home/guillaume/Documents/projet3a/memoisation/src/main.cpp
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o: CMakeFiles/memoisation.dir/flags.make
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o: src/fixedPoint.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/guillaume/Documents/projet3a/memoisation/Cpp/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o -c /home/guillaume/Documents/projet3a/memoisation/Cpp/src/fixedPoint.cpp
 
-CMakeFiles/memoisation.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/memoisation.dir/src/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/guillaume/Documents/projet3a/memoisation/src/main.cpp > CMakeFiles/memoisation.dir/src/main.cpp.i
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/memoisation.dir/src/fixedPoint.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/guillaume/Documents/projet3a/memoisation/Cpp/src/fixedPoint.cpp > CMakeFiles/memoisation.dir/src/fixedPoint.cpp.i
 
-CMakeFiles/memoisation.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/memoisation.dir/src/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/guillaume/Documents/projet3a/memoisation/src/main.cpp -o CMakeFiles/memoisation.dir/src/main.cpp.s
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/memoisation.dir/src/fixedPoint.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/guillaume/Documents/projet3a/memoisation/Cpp/src/fixedPoint.cpp -o CMakeFiles/memoisation.dir/src/fixedPoint.cpp.s
 
-CMakeFiles/memoisation.dir/src/main.cpp.o.requires:
-.PHONY : CMakeFiles/memoisation.dir/src/main.cpp.o.requires
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.requires:
+.PHONY : CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.requires
 
-CMakeFiles/memoisation.dir/src/main.cpp.o.provides: CMakeFiles/memoisation.dir/src/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/main.cpp.o.provides.build
-.PHONY : CMakeFiles/memoisation.dir/src/main.cpp.o.provides
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.provides: CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.requires
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.provides.build
+.PHONY : CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.provides
 
-CMakeFiles/memoisation.dir/src/main.cpp.o.provides.build: CMakeFiles/memoisation.dir/src/main.cpp.o
+CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.provides.build: CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o
+
+CMakeFiles/memoisation.dir/src/benchmark.cpp.o: CMakeFiles/memoisation.dir/flags.make
+CMakeFiles/memoisation.dir/src/benchmark.cpp.o: src/benchmark.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/guillaume/Documents/projet3a/memoisation/Cpp/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/memoisation.dir/src/benchmark.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/memoisation.dir/src/benchmark.cpp.o -c /home/guillaume/Documents/projet3a/memoisation/Cpp/src/benchmark.cpp
+
+CMakeFiles/memoisation.dir/src/benchmark.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/memoisation.dir/src/benchmark.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/guillaume/Documents/projet3a/memoisation/Cpp/src/benchmark.cpp > CMakeFiles/memoisation.dir/src/benchmark.cpp.i
+
+CMakeFiles/memoisation.dir/src/benchmark.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/memoisation.dir/src/benchmark.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/guillaume/Documents/projet3a/memoisation/Cpp/src/benchmark.cpp -o CMakeFiles/memoisation.dir/src/benchmark.cpp.s
+
+CMakeFiles/memoisation.dir/src/benchmark.cpp.o.requires:
+.PHONY : CMakeFiles/memoisation.dir/src/benchmark.cpp.o.requires
+
+CMakeFiles/memoisation.dir/src/benchmark.cpp.o.provides: CMakeFiles/memoisation.dir/src/benchmark.cpp.o.requires
+	$(MAKE) -f CMakeFiles/memoisation.dir/build.make CMakeFiles/memoisation.dir/src/benchmark.cpp.o.provides.build
+.PHONY : CMakeFiles/memoisation.dir/src/benchmark.cpp.o.provides
+
+CMakeFiles/memoisation.dir/src/benchmark.cpp.o.provides.build: CMakeFiles/memoisation.dir/src/benchmark.cpp.o
 
 # Object files for target memoisation
 memoisation_OBJECTS = \
-"CMakeFiles/memoisation.dir/src/main.cpp.o"
+"CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o" \
+"CMakeFiles/memoisation.dir/src/benchmark.cpp.o"
 
 # External object files for target memoisation
 memoisation_EXTERNAL_OBJECTS =
 
-memoisation: CMakeFiles/memoisation.dir/src/main.cpp.o
+memoisation: CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o
+memoisation: CMakeFiles/memoisation.dir/src/benchmark.cpp.o
 memoisation: CMakeFiles/memoisation.dir/build.make
 memoisation: CMakeFiles/memoisation.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable memoisation"
@@ -89,7 +114,8 @@ memoisation: CMakeFiles/memoisation.dir/link.txt
 CMakeFiles/memoisation.dir/build: memoisation
 .PHONY : CMakeFiles/memoisation.dir/build
 
-CMakeFiles/memoisation.dir/requires: CMakeFiles/memoisation.dir/src/main.cpp.o.requires
+CMakeFiles/memoisation.dir/requires: CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o.requires
+CMakeFiles/memoisation.dir/requires: CMakeFiles/memoisation.dir/src/benchmark.cpp.o.requires
 .PHONY : CMakeFiles/memoisation.dir/requires
 
 CMakeFiles/memoisation.dir/clean:
@@ -97,6 +123,6 @@ CMakeFiles/memoisation.dir/clean:
 .PHONY : CMakeFiles/memoisation.dir/clean
 
 CMakeFiles/memoisation.dir/depend:
-	cd /home/guillaume/Documents/projet3a/memoisation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/guillaume/Documents/projet3a/memoisation /home/guillaume/Documents/projet3a/memoisation /home/guillaume/Documents/projet3a/memoisation /home/guillaume/Documents/projet3a/memoisation /home/guillaume/Documents/projet3a/memoisation/CMakeFiles/memoisation.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/guillaume/Documents/projet3a/memoisation/Cpp && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/guillaume/Documents/projet3a/memoisation/Cpp /home/guillaume/Documents/projet3a/memoisation/Cpp /home/guillaume/Documents/projet3a/memoisation/Cpp /home/guillaume/Documents/projet3a/memoisation/Cpp /home/guillaume/Documents/projet3a/memoisation/Cpp/CMakeFiles/memoisation.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/memoisation.dir/depend
 
