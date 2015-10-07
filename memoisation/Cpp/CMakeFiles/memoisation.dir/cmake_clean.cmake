@@ -1,4 +1,4 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/memoisation.dir/src/fixedPoint.cpp.o"
   "CMakeFiles/memoisation.dir/src/benchmark.cpp.o"
   "memoisation.pdb"
@@ -6,6 +6,6 @@ FILE(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang CXX)
-  INCLUDE(CMakeFiles/memoisation.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang CXX)
+  include(CMakeFiles/memoisation.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

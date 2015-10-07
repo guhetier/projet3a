@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <iostream>
+#include <functional>
 
 template <typename T, typename U>
 const std::function<U(T)>& rec (std::function<U(std::function<U(T)>, T)> frec){
