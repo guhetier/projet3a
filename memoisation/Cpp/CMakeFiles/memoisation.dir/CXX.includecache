@@ -9,6 +9,8 @@
 /home/guillaume/Documents/projet3a/memoisation/Cpp/src/benchmark.cpp
 fixedPoint.hpp
 /home/guillaume/Documents/projet3a/memoisation/Cpp/src/fixedPoint.hpp
+functionTry.hpp
+/home/guillaume/Documents/projet3a/memoisation/Cpp/src/functionTry.hpp
 iostream
 -
 chrono
@@ -17,8 +19,16 @@ chrono
 /home/guillaume/Documents/projet3a/memoisation/Cpp/src/fixedPoint.hpp
 unordered_map
 -
-algorithm
+iostream
+-
+functional
+-
+
+/home/guillaume/Documents/projet3a/memoisation/Cpp/src/functionTry.hpp
+unordered_map
 -
 iostream
+-
+algorithm
 -
 

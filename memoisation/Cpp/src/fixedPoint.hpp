@@ -2,35 +2,10 @@
 #define FIXEDPOINT_HPP
 
 #include <unordered_map>
-#include <algorithm>
 #include <iostream>
+#include <functional>
 
-template <typename T, typename U>
-const std::function<U(T)>& rec (std::function<U(std::function<U(T)>, T)> frec){
-    std::function<U(T)>* g = new std::function<U(T)>;
-    *g = [frec, g](T n){
-        return frec(*g, n);
-    };
-    return *g;
-}
 
-template <typename T, typename U>
-const std::function<U(T)>& memo (std::function<U(std::function<U(T)>, T)>  frec){
-    std::unordered_map<T,U>* table = new std::unordered_map<T,U>;
-
-    std::function<U(T)>* g = new std::function<U(T)>;
-    *g = [table, frec, g](T n){
-        try{
-            return table->at(n);
-        }
-        catch(const std::out_of_range& e){
-            U r = frec(*g, n);
-            table->insert({n,r});
-            return r;
-        }
-    };
-    return *g;
-}
 
 //Gestion propre de la mémoire par l'utilisation d'un objet
 //En conservant les variables de la cloture dans un objet, il n'est plus nécessaire
@@ -40,7 +15,10 @@ template <typename T, typename U> //Type de l'argumement, Type de retour
 class Memo {
 
 public:
-    Memo(std::function<U(std::function<U(T)>, T)> frec){
+
+    // Constructor
+    Memo(std::function<U(std::function<U(T)>, T)> frec, const std::hash<U>& hf = std::hash<U>(), const std::equal_to<U>& eq = std::equal_to<U>()){
+        table(hf, eq);
         fmemo = [this, &frec](T n){
             try{
                 return table.at(n);
@@ -53,9 +31,21 @@ public:
         };
     }
 
+    // // Let specify the hash function and the initial number of buckets on the hash table
+    // Memo(std::function<U(std::function<U(T)>, T)> frec, int n, const std::hash<U>& hf = std::hash<U>())
+    //     : Memo(frec) {
+    //     table(hf);
+    // }
+
+    // Exec the memoised function to arg
     U apply(T arg) const {
         return fmemo(arg);
     };
+
+    // Overload operator (). Same as apply.
+    U operator() (T arg) const {
+        return fmemo(arg);
+    }
 
 private:
     std::unordered_map<T, U> table;

@@ -11,7 +11,7 @@ add_executable(
 
 add_executable(
     RGBTilesNoMerge
-    src/RGBTilesNoMerge.cpp
+    src/RGBTilesNoMergeTwoArgs.cpp
     ../Cpp/src/fixedPoint.hpp
 )
 
