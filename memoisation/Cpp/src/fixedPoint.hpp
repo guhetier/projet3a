@@ -15,10 +15,11 @@ template <typename T, typename U> //Type de l'argumement, Type de retour
 class Memo {
 
 public:
-
     // Constructor
-    Memo(std::function<U(std::function<U(T)>, T)> frec, const std::hash<U>& hf = std::hash<U>(), const std::equal_to<U>& eq = std::equal_to<U>()){
-        table(hf, eq);
+    Memo(std::function<U(std::function<U(T)>, T)> frec/*, const std::hash<T>& hf = std::hash<T>(), const std::equal_to<T>& eq = std::equal_to<T>()*/){
+        table(10, std::unordered_map<T,U>::hasher(),
+                std::unordered_map<T,U>::key_equal(),
+                std::unordered_map<T,U>::allocator_type());
         fmemo = [this, &frec](T n){
             try{
                 return table.at(n);

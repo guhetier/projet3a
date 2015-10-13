@@ -8,4 +8,13 @@ add_executable(
     src/fixedPoint.hpp
     src/fixedPoint.cpp
     src/benchmark.cpp
+    src/functionTry
+)
+
+add_executable(
+    test
+    src/test.cpp
+    src/fixedPoint.hpp
+    src/fixedPoint.cpp
+    src/functionTry.hpp
 )
