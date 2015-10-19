@@ -1,6 +1,8 @@
-//#include "fixedPoint.hpp"
+#include "fixedPoint.hpp"
 #include <iostream>
 #include <unordered_map>
+#include <functional>
+#include <tuple>
 
 using namespace std;
 
@@ -29,21 +31,21 @@ struct MyHash{
 };
 
 namespace std{
-    template<>
-    struct hash<MyPair>{
-        std::size_t operator()(const MyPair& k) const{
-            return ((hash<int>()(k.x)
-                   ^ (hash<int>()(k.y) << 1)) >> 1);
-        }
-    };
+    // template<>
+    // struct hash<MyPair>{
+    //     std::size_t operator()(const MyPair& k) const{
+    //         return ((hash<int>()(k.x)
+    //                ^ (hash<int>()(k.y) << 1)) >> 1);
+    //     }
+    // };
 
-    template<>
-    struct hash<tuple<int, int>> {
-        std::size_t operator()(const tuple<int, int> k) const{
-            return ((hash<int>()(get<0>(k))
-                   ^ (hash<int>()(get<1>(k)) << 1)) >> 1);
-        }
-    };
+    // template<>
+    // struct hash<tuple<int, int>> {
+    //     std::size_t operator()(const tuple<int, int> k) const{
+    //         return ((hash<int>()(get<0>(k))
+    //                ^ (hash<int>()(get<1>(k)) << 1)) >> 1);
+    //     }
+    // };
 
     template<>
     struct equal_to<tuple<int, int>> {
@@ -53,21 +55,28 @@ namespace std{
     };
 }
 
+
+
 int main(int argc, char const *argv[]) {
+    auto myhash = [](const pair<int, int> k){
+            return ((hash<int>()(get<0>(k))
+                   ^ (hash<int>()(get<1>(k)) << 1)) >> 1);
+        };
 
-    unordered_map<tuple<int,int>, int, MyHash> test;
+    unordered_map<pair<int,int>, int, function<size_t(pair<int, int>)>> test(10, myhash);
 
-    /*Memo<int, int> fibo ([](function<int(int)> f, int n){
+    auto fib = [](function<int(pair<int, int>)> f, tuple<int, int> p){
+        int n = get<0>(p);
         if (n<2)
             return 1;
 
-        return f(n-1) + f(n-2);
-    });*/
+        return f(make_pair(n-1,0)) + f(make_pair(n-2,0));
+    };
 
-    test[make_tuple(1, 1)] = 1;
-    test[make_tuple(2, 2)] = 2;
+    Memo<pair<int, int>, int> fibo (fib, 10, myhash);
 
-    std::cout << "hello world " << test[make_tuple(1,1)] << std::endl;
-
+    test[make_pair(1, 1)] = 1;
+    test[make_pair(2, 2)] = 2;
+    std::cout << "hello world " << fibo(make_pair(5,0)) << std::endl;
     return 0;
 }

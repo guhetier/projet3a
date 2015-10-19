@@ -16,10 +16,8 @@ class Memo {
 
 public:
     // Constructor
-    Memo(std::function<U(std::function<U(T)>, T)> frec/*, const std::hash<T>& hf = std::hash<T>(), const std::equal_to<T>& eq = std::equal_to<T>()*/){
-        table(10, std::unordered_map<T,U>::hasher(),
-                std::unordered_map<T,U>::key_equal(),
-                std::unordered_map<T,U>::allocator_type());
+    // Build the memoised function
+    Memo(std::function<U(std::function<U(T)>, T)> frec){
         fmemo = [this, &frec](T n){
             try{
                 return table.at(n);
@@ -32,11 +30,22 @@ public:
         };
     }
 
-    // // Let specify the hash function and the initial number of buckets on the hash table
-    // Memo(std::function<U(std::function<U(T)>, T)> frec, int n, const std::hash<U>& hf = std::hash<U>())
-    //     : Memo(frec) {
-    //     table(hf);
-    // }
+    // Let specify the hash function and the initial number of buckets on the hash table
+    // Type T sould have an operator== methode defined or equal_to<T> should be defined
+    Memo(std::function<U(std::function<U(T)>, T)> frec, int n, std::function<std::size_t(T)> hf)
+    : table(n, hf)
+    {
+        fmemo = [this, &frec](T n){
+            try{
+                return table.at(n);
+            }
+            catch(std::out_of_range e){
+                U r = frec(fmemo, n);
+                table.insert({n,r});
+                return r;
+            }
+        };
+    }
 
     // Exec the memoised function to arg
     U apply(T arg) const {
@@ -49,7 +58,7 @@ public:
     }
 
 private:
-    std::unordered_map<T, U> table;
+    std::unordered_map<T, U, std::function<std::size_t(T)>> table;
     std::function<U(T)> fmemo;
 };
 
