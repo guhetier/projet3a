@@ -20,3 +20,9 @@ add_executable(
     src/RGBTiles.cpp
     ../Cpp/src/fixedPoint.hpp
 )
+
+add_executable(
+    crackFreeWall
+    src/crackFreeWall.cpp
+    ../Cpp/src/fixedPoint.hpp
+)

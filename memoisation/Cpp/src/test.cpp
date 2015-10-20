@@ -1,8 +1,11 @@
 #include "fixedPoint.hpp"
+#include "hash.hpp"
+
 #include <iostream>
 #include <unordered_map>
 #include <functional>
 #include <tuple>
+#include <vector>
 
 using namespace std;
 
@@ -63,7 +66,12 @@ int main(int argc, char const *argv[]) {
                    ^ (hash<int>()(get<1>(k)) << 1)) >> 1);
         };
 
-    unordered_map<pair<int,int>, int, function<size_t(pair<int, int>)>> test(10, myhash);
+    mem::hash<int> h;
+    mem::hash<pair<int, int>> g;
+    mem::hash<double> t;
+
+    cout << h(4) << endl << g(make_pair(2, 2)) << endl << t(2.5) << endl;
+
 
     auto fib = [](function<int(pair<int, int>)> f, tuple<int, int> p){
         int n = get<0>(p);
@@ -73,10 +81,8 @@ int main(int argc, char const *argv[]) {
         return f(make_pair(n-1,0)) + f(make_pair(n-2,0));
     };
 
-    Memo<pair<int, int>, int> fibo (fib, 10, myhash);
+    Memo<pair<int, int>, int> fibo (fib, 10, g);
 
-    test[make_pair(1, 1)] = 1;
-    test[make_pair(2, 2)] = 2;
     std::cout << "hello world " << fibo(make_pair(5,0)) << std::endl;
     return 0;
 }

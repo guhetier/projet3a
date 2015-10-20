@@ -1,6 +1,8 @@
 #ifndef FIXEDPOINT_HPP
 #define FIXEDPOINT_HPP
 
+//#include "hash.hpp"
+
 #include <unordered_map>
 #include <iostream>
 #include <functional>
@@ -30,7 +32,7 @@ public:
         };
     }
 
-    // Let specify the hash function and the initial number of buckets on the hash table
+    // Allow to specify the hash function and the initial number of buckets on the hash table
     // Type T sould have an operator== methode defined or equal_to<T> should be defined
     Memo(std::function<U(std::function<U(T)>, T)> frec, int n, std::function<std::size_t(T)> hf)
     : table(n, hf)
@@ -59,6 +61,7 @@ public:
 
 private:
     std::unordered_map<T, U, std::function<std::size_t(T)>> table;
+    //std::unordered_map<T, U, mem::hash<T>> table;
     std::function<U(T)> fmemo;
 };
 
