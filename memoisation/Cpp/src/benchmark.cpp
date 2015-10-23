@@ -34,7 +34,7 @@ int main(int argc, char const *argv[]) {
     start = chrono::steady_clock::now();
 
     Memo<int, int> fib(fibbo);
-    int r2 = (n);
+    int r2 = fib(n);
     //int r2 = memo<int, int>(fibbo)(n);
 
     end = chrono::steady_clock::now();

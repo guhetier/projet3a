@@ -34,13 +34,13 @@ struct MyHash{
 };
 
 namespace std{
-    // template<>
-    // struct hash<MyPair>{
-    //     std::size_t operator()(const MyPair& k) const{
-    //         return ((hash<int>()(k.x)
-    //                ^ (hash<int>()(k.y) << 1)) >> 1);
-    //     }
-    // };
+    template<>
+    struct hash<MyPair>{
+        std::size_t operator()(const MyPair& k) const{
+            return ((hash<int>()(k.x)
+                   ^ (hash<int>()(k.y) << 1)) >> 1);
+        }
+    };
 
     // template<>
     // struct hash<tuple<int, int>> {

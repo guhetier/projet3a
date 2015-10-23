@@ -19,7 +19,9 @@ class Memo {
 public:
     // Constructor
     // Build the memoised function
-    Memo(std::function<U(std::function<U(T)>, T)> frec){
+    Memo(std::function<U(std::function<U(T)>, T)> frec)
+    :table(10, std::hash<T>())
+    {
         fmemo = [this, &frec](T n){
             try{
                 return table.at(n);
@@ -60,6 +62,7 @@ public:
     }
 
 private:
+    //std::unordered_map<T, U> table;
     std::unordered_map<T, U, std::function<std::size_t(T)>> table;
     //std::unordered_map<T, U, mem::hash<T>> table;
     std::function<U(T)> fmemo;
