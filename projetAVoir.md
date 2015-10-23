@@ -6,3 +6,8 @@ Projet Euler à voir pour la mémoisation
 - arguments multiples
 - cache : utilisation d'un tas ?
 - fonction mutuellement récursives
+
+- sujet INF411 l'an dernier
+- implémenter table de hash avec différents bucket (tree, listes..)
+- voir aussi le hash avec décalage dans un seul tableau
+"linear probing" / "open adressing"
