@@ -64,7 +64,7 @@ public:
 private:
 
     inline int getOffset(std::size_t h) const {
-        return h%length; //TODO : use bit-operator to speed up the operation
+        return h & (length-1);
     }
 
     void resize(int newLength){
