@@ -26,15 +26,3 @@ add_executable(
     src/crackFreeWall.cpp
     ../Cpp/src/fixedPoint.hpp
 )
-
-add_executable(
-    coinSums
-    src/coinSums.cpp
-)
-
-add_executable(
-    countingBlocks2
-    ../Cpp/src/fixedPoint.hpp
-    src/countingBlock2.cpp
-
-)

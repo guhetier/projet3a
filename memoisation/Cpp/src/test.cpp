@@ -1,5 +1,6 @@
 #include "fixedPoint.hpp"
 #include "hash.hpp"
+#include "listHashTable.hpp"
 
 #include <iostream>
 #include <unordered_map>
@@ -22,6 +23,10 @@ int main(int argc, char const *argv[]) {
     };
 
     Memo<pair<int, int>, int> fibo (fib);
+
+    ListHashTable<string, int> table;
+    table.add("test", 4);
+    std::cout << table.get("test") << std::endl;
 
     std::cout << "hello world " << fibo(make_pair(5,0)) << std::endl;
     return 0;
