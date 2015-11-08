@@ -8,7 +8,7 @@ public:
     virtual ~Bucket();
 
     virtual void insert (const K& key, const V& val) =0;
-    virtual V get (const K& key) const =0;
+    virtual V get (const K& key) =0;
     virtual V remove (const K& key) =0;
 
     //To-do : Add iterators

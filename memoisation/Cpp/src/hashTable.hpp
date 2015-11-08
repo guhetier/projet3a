@@ -13,7 +13,7 @@ public:
 
     virtual void add(const K& key, const T& val) = 0;
     virtual T del(const K& key) = 0;
-    virtual T get(const K& key) const = 0;
+    virtual T get(const K& key) = 0;
 };
 
 class InvalidKeyException: public std::exception {

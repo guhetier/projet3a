@@ -10,6 +10,10 @@ template<typename K, typename V>
 class ListBucket : public Bucket<K,V>, private std::list<std::pair<K,V>> {
 public:
 
+    ListBucket (int maxSize=5) : maxLength(maxSize){
+        length = 0;
+    }
+
     virtual void insert(const K& key, const V& val){
         try{
             remove(key);
@@ -22,7 +26,7 @@ public:
             length++;
     }
 
-    virtual V get(const K& key) const {
+    virtual V get(const K& key){
         //May throw an exception if the key is not found
         V val = remove(key);
 

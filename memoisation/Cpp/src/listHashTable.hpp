@@ -52,7 +52,7 @@ public:
         throw InvalidKeyException();
     }
 
-    virtual T get(const K& key) const {
+    virtual T get(const K& key){
         int h = getOffset(hash(key));
         for(auto i : table[h]){
             if(std::get<0>(i) == key)
