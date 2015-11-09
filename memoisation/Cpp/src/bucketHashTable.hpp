@@ -1,12 +1,13 @@
 #ifndef BucketHashTABLE_HPP
 #define  BucketHashTABLE_HPP
 
-#include "hashTable.hpp"
-#include "bucket.hpp"
 #include "listBucket.hpp"
+#include "hash.hpp"
+#include <functional>
+#include <stdexcept>
 
-template<typename K, typename V>
-class BucketHashTable : public HashTable<K, V> {
+template<typename K, typename V, typename B>
+class BucketHashTable {
 
 public:
 
@@ -16,7 +17,7 @@ public:
         length = 1;
         while(length < n)
             length <<= 1;
-        table = alloc(length);
+        table = new ListBucket<K,V>[length];
         hash = h;
     }
 
@@ -24,10 +25,10 @@ public:
         delete[] table;
     }
 
-    virtual void add(const K& key, const V& val){
-        int h = getOffset(hash(key));
+    void insert(const std::pair<const K, V>& val){
+        int h = getOffset(hash(std::get<0>(val)));
 
-        table[h].insert(key, val);
+        table[h].insert(val);
         nbElements++;
 
         if(nbElements/(float)length > maxFillingProp){
@@ -35,14 +36,19 @@ public:
         }
     }
 
-    virtual V del(const K& key){
-        int h = getOffset(hash(key));
-        return table[h].remove(key);
-    }
-
-    virtual V get(const K& key){
+    const V& at(const K& key) const{
         int h = getOffset(hash(key));
         return table[h].get(key);
+    }
+
+    V& at(const K& key){
+        int h = getOffset(hash(key));
+        return table[h].at(key);
+    }
+
+    V del(const K& key){
+        int h = getOffset(hash(key));
+        return table[h].remove(key);
     }
 
 private:
@@ -53,8 +59,8 @@ private:
 
     void resize(int newLength){
         // Allcoating a new table
-        Bucket<K,V>* oldTable = table;
-        table = alloc(newLength);
+        ListBucket<K,V>* oldTable = table;
+        table = new ListBucket<K,V>[newLength];
         int oldLength = length;
         length = newLength;
 
@@ -66,11 +72,7 @@ private:
         delete[] oldTable;
     }
 
-    virtual Bucket<K, V>* alloc(int length){
-        return new ListBucket<K,V>[length];
-    }
-
-    Bucket<K,V> *table;
+    B *table;
     int length;
     int nbElements;
     const float maxFillingProp = 0.7;

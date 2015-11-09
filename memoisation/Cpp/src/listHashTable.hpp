@@ -1,11 +1,13 @@
 #ifndef LISTHASHTABLE_HPP
 #define  LISTHASHTABLE_HPP
 
-#include "hashTable.hpp"
-#include <deque>
+#include <functional>
+#include <list>
+#include <stdexcept>
+#include "hash.hpp"
 
-template<typename K, typename T>
-class ListHashTable : public HashTable<K, T> {
+template<typename K, typename V>
+class ListHashTable {
 public:
 
     ListHashTable(int n = 16, std::function<std::size_t(K)> h=mem::hash<K>())
@@ -14,24 +16,26 @@ public:
         length = 1;
         while(length < n)
             length <<= 1;
-        table = new std::deque<std::pair<K,T>>[length];
+        table = new std::list<std::pair<const K,V>>[length];
         hash = h;
     }
 
-    virtual ~ListHashTable(){
+    ~ListHashTable(){
         delete[] table;
     }
 
-    virtual void add(const K& key, const T& val){
+    void insert(const std::pair<const K, V>& val){
+        const K& key = std::get<0>(val);
         int h = getOffset(hash(key));
+
         for(auto i : table[h]){
             if(std::get<0>(i) == key){
-                std::get<1>(i) = val;
+                std::get<1>(i) = std::get<1>(val);
                 return;
             }
         }
 
-        table[h].push_front(std::make_pair(key, val));
+        table[h].push_front(val);
         nbElements++;
 
         if(nbElements/(float)length > maxFillingProp){
@@ -39,26 +43,37 @@ public:
         }
     }
 
-    virtual T del(const K& key){
-        int h = getOffset(hash(key));
-        for(auto i = table[h].begin(); i != table[h].end(); i++){
-            if(std::get<0>(*i) == key){
-                T r = std::get<1>(*i);
-                table[h].erase(i);
-                nbElements--;
-                return r;
-            }
-        }
-        throw InvalidKeyException();
-    }
-
-    virtual T get(const K& key){
+    V& at(const K& key){
         int h = getOffset(hash(key));
         for(auto i : table[h]){
             if(std::get<0>(i) == key)
                 return std::get<1>(i);
         }
-        throw InvalidKeyException();
+        throw std::out_of_range("Can not find the key");
+    }
+
+
+    const V& at(const K& key) const{
+        int h = getOffset(hash(key));
+        for(auto i : table[h]){
+            if(std::get<0>(i) == key)
+                return std::get<1>(i);
+        }
+        throw std::out_of_range("Can not find the key");
+    }
+
+
+    V del(const K& key){
+        int h = getOffset(hash(key));
+        for(auto i = table[h].begin(); i != table[h].end(); i++){
+            if(std::get<0>(*i) == key){
+                V r = std::get<1>(*i);
+                table[h].erase(i);
+                nbElements--;
+                return r;
+            }
+        }
+        throw std::out_of_range("Can not find the key");
     }
 
 private:
@@ -69,8 +84,8 @@ private:
 
     void resize(int newLength){
         // Allcoating a new table
-        std::deque<std::pair<K,T>>* oldTable = table;
-        table = new std::deque<std::pair<K,T>>[newLength];
+        std::list<std::pair<const K,V>>* oldTable = table;
+        table = new std::list<std::pair<const K,V>>[newLength];
         int oldLength = length;
         length = newLength;
 
@@ -84,7 +99,7 @@ private:
         delete[] oldTable;
     }
 
-    std::deque<std::pair<K,T>> *table;
+    std::list<std::pair<const K,V>> *table;
     int length;
     int nbElements;
     const float maxFillingProp = 0.7;

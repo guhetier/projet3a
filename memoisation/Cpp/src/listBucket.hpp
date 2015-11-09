@@ -1,55 +1,46 @@
 #ifndef LISTBUCKET_HPP
 #define LISTBUCKET_HPP
 
-#include "bucket.hpp"
-#include "hashTable.hpp"
 #include <list>
 #include <tuple>
 
 template<typename K, typename V>
-class ListBucket : public Bucket<K,V>, private std::list<std::pair<K,V>> {
+class ListBucket : private std::list<std::pair<K,V>> {
 public:
 
     ListBucket (int maxSize=5) : maxLength(maxSize){
-        length = 0;
     }
 
-    virtual void insert(const K& key, const V& val){
+    void insert(const std::pair<const K, V> val){
         try{
-            remove(key);
-        } catch (InvalidKeyException k){}
+            remove(std::get<0>(val));
+        } catch (std::out_of_range k){}
 
-        this->emplace_front(key, val);
-        if(length == maxLength)
+        this->push_front(val);
+        if(this->size() == maxLength)
             this->pop_back();
-        else
-            length++;
     }
 
-    virtual V get(const K& key){
+    V& at(const K& key) {
         //May throw an exception if the key is not found
-        V val = remove(key);
+        std::pair<K,V> val = remove(key);
 
-        this->emplace_front(key, val);
-        length++;
-        return val;
+        this->push_front(val);
+        return std::get<1>(this->front());
     }
 
-    virtual V remove(const K& key){
+    std::pair<K,V> remove(const K& key){
         for(auto i = this->begin(); i != this->end(); i++){
             if(std::get<0>(*i) == key){
-                V r = std::get<1>(*i);
                 this->erase(i);
-                length--;
-                return r;
+                return *i;
             }
         }
-        throw InvalidKeyException();
+        throw std::out_of_range("Can not find the key");
     }
 
 private:
     const int maxLength;
-    int length;
 };
 
 #endif
