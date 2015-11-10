@@ -36,13 +36,16 @@ int main(int argc, char const *argv[]) {
         return f(make_pair(n-1,k)) + f(make_pair(n-1, k-1));
     };
 
+    int n = 10;
+    int k = 5;
+
     Memo<pair<int, int>, int, ListHashTable<pair<int, int>, int>> fibo (fib);
     Memo<pair<int, int>, int,
         BucketHashTable<pair<int, int>, int,
-        ListBucket<pair<int, int>, int>>> fibo2 (fib);
+        ListBucket<pair<int, int>, int>, 5>> fibo2 (fib, 5);
 
     Memo<pair<int, int>, long> trianglePascal(pascal);
 
-    std::cout << "hello world " << trianglePascal(make_pair(9000,4000)) << std::endl;
+    std::cout << "hello world " << fibo(make_pair(n, k)) << std::endl;
     return 0;
 }

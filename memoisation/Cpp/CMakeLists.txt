@@ -14,3 +14,12 @@ add_executable(
     src/fixedPoint.hpp
     src/test.cpp
 )
+
+add_executable(
+    memoryTest
+    src/memoryTest.cpp
+    src/fixedPoint.hpp
+    src/listBucket.hpp
+    src/bucketHashTable.hpp
+    src/listHashTable.hpp
+)

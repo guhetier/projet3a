@@ -3,9 +3,10 @@
 
 #include <list>
 #include <tuple>
+#include <iostream>
 
 template<typename K, typename V>
-class ListBucket : private std::list<std::pair<K,V>> {
+class ListBucket : public std::list<std::pair<K,V>> {
 public:
 
     ListBucket (int maxSize=5) : maxLength(maxSize){
@@ -38,6 +39,7 @@ public:
         }
         throw std::out_of_range("Can not find the key");
     }
+
 
 private:
     const int maxLength;

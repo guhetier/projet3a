@@ -21,23 +21,9 @@ class Memo {
 public:
     // Constructor
     // Build the memoised function
-    Memo(std::function<U(std::function<U(K)>, K)> frec):
-    table(100, mem::hash<K>()){
-        fmemo = [this, &frec](K n){
-            try{
-                return table.at(n);
-            }
-            catch(std::out_of_range e){
-                U r = frec(fmemo, n);
-                table.insert({n,r});
-                return r;
-            }
-        };
-    }
-
     // Allow to specify the hash function and the initial number of buckets on the hash table
     // Type T sould have an operator== methode defined or equal_to<K> should be defined
-    Memo(std::function<U(std::function<U(K)>, K)> frec, int n, std::function<std::size_t(K)> hf)
+    Memo(std::function<U(std::function<U(K)>, K)> frec, int n = 100, std::function<std::size_t(K)> hf = mem::hash<K>())
     : table(n, hf)
     {
         fmemo = [this, &frec](K n){
