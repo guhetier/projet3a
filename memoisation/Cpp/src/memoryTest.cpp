@@ -63,11 +63,11 @@ int main(int argc, char const *argv[]) {
     cout << n << " " << k << " " << t << " " << res1 << " " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << endl;
 
 
-    /*start = chrono::steady_clock::now();
+    start = chrono::steady_clock::now();
     long res2 = tpCached(args);
     end = chrono::steady_clock::now();
 
-    cout << n << " " << k << " " << t << " " << res2 << " " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << endl;*/
+    cout << n << " " << k << " " << t << " " << res2 << " " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << endl;
 
     return 0;
 }
